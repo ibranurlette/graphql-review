@@ -7,6 +7,7 @@ export const Position = objectType({
     t.id("id");
     t.string("title");
     t.string("company");
+    t.string("location");
     t.date("startDate", {
       resolve: (position) => new Date(position.startDate),
     });
@@ -31,10 +32,10 @@ export const Position = objectType({
         ) % 12
     );
 
-    t.list.string("achievements", {
-      resolve: (position) => position.achievements,
-    });
+    // t.list.string("achievements", {
+    //   resolve: (position) => position.achievements,
+    // });
 
-    // t.list.string("achievements", (positions) => positions.achievements);
+    t.list.string("achievements", (positions) => positions.achievements);
   },
 });

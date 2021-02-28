@@ -15,8 +15,9 @@ export const Query = queryType({
       resolve: () => data.positions,
     });
 
-    t.field("position", {
+    t.nullable.field("position", {
       type: Position,
+      description: "Find a position by its ID",
       args: { id: idArg() },
       resolve: (root, { id }: { id: string }, ctx) =>
         data.positions.find((position) => position.id === id),
